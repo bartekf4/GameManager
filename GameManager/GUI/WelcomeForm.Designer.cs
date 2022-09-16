@@ -1,6 +1,6 @@
 ﻿namespace GameManager.GUI;
 
-partial class Form1
+partial class WelcomeForm
 {
     /// <summary>
     ///  Required designer variable.
@@ -300,13 +300,13 @@ partial class Form1
             this.tableLayoutPanel4.Size = new System.Drawing.Size(200, 100);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
-            // Form1
+            // WelcomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(830, 464);
             this.Controls.Add(this.splitContainer1);
-            this.Name = "Form1";
+            this.Name = "WelcomeForm";
             this.Text = "Game Manager";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);

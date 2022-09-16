@@ -1,38 +1,25 @@
-using GameManager.Contexts;
-using GameManager.Data.Models;
 using GameManager.DataHandlers;
-using GameManager.Properties;
 
 namespace GameManager.GUI;
 
-public partial class Form1 : Form
+public partial class WelcomeForm : Form
 {
-    private int itemsNumber;
+    private int _itemsNumber;
 
-    public Form1()
+    public WelcomeForm()
     {
         InitializeComponent();
         UsersHandler.AdminCheckIfExistsOrAdd();
         UsersHandler.GuestCheckIfExistsOrAdd();
         CategoryHandler.EnsureStartingCategoryExists();
 
-        
+
         numberOfItems_numericUpDown.Maximum = ObjectHandler.Count();
 
-        if (ObjectHandler.Count() >= 5)
-        {
-            numberOfItems_numericUpDown.Value = 5;
-            
-        }
-        else
-        {
-            numberOfItems_numericUpDown.Value = ObjectHandler.Count();
-        }
-        
-        itemsNumber = (int) numberOfItems_numericUpDown.Value;
-        Painters.FillBestObjects(tableLayoutPanel5, itemsNumber);
-        var a = new Main();
-        a.Show();
+        numberOfItems_numericUpDown.Value = ObjectHandler.Count() >= 5 ? 5 : ObjectHandler.Count();
+
+        _itemsNumber = (int) numberOfItems_numericUpDown.Value;
+        Painters.FillBestObjects(tableLayoutPanel5, _itemsNumber);
     }
 
     private void linkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -63,8 +50,9 @@ public partial class Form1 : Form
         {
             Globals.CurrentUser = textBox1.Text;
 
-            var main = new Main();
+            var main = new MainForm();
             main.Show();
+            Hide();
         }
     }
 
@@ -75,14 +63,13 @@ public partial class Form1 : Form
     private void guest_linkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
     {
         Globals.CurrentUser = "guest";
-        var a = new Main();
+        var a = new MainForm();
         a.Show();
     }
 
     private void numberOfItems_numericUpDown_ValueChanged(object sender, EventArgs e)
     {
-        this.itemsNumber = (int) numberOfItems_numericUpDown.Value;
-        Painters.FillBestObjects(tableLayoutPanel5,itemsNumber);
-
+        _itemsNumber = (int) numberOfItems_numericUpDown.Value;
+        Painters.FillBestObjects(tableLayoutPanel5, _itemsNumber);
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace GameManager.Models;
+namespace GameManager.Data.Models;
 
 public class CategoryClosure
 {
@@ -12,5 +12,5 @@ public class CategoryClosure
     [NotNull] public Category Descendant { get; set; }
     public int DescendantId { get; set; }
 
-    public int Depth { get; set; }
+    public int? Depth { get; set; }
 }

@@ -1,6 +1,6 @@
 ﻿namespace GameManager.DataHandlers;
 
-public class Gloabals
+public class Globals
 {
-    public static string CurrentUser { get; set; } = "geuest";
+    public static string CurrentUser { get; set; } = "guest";
 }
